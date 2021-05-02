@@ -1,0 +1,17 @@
+[user]
+    name = Matteo Codogno
+    email = matteo.codogno@welld.ch
+
+[core]
+    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+
+[interactive]
+    diffFilter = delta --color-only
+
+[pull]
+    ff = only
+    rebase = true
+
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P

@@ -1,0 +1,4 @@
+global:
+  survey:
+    last-prompted: "2020-10-08T10:06:23+02:00"
+kubeContexts: []
