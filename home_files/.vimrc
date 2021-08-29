@@ -1,15 +1,25 @@
 syntax on
 
 set autoindent
-set relativenumber
+set smartindent
+set showmatch
+set hlsearch
+set ignorecase
+set incsearch
+
 set ts=2
 set sts=2
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
+set cursorline
+
 filetype plugin indent on
 
-:set cursorline
+
+" toggle hybrid line numbers
+set number! relativenumber!
+set nu! rnu!
 
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
