@@ -1,0 +1,79 @@
+set nocompatible
+
+syntax on
+filetype on
+filetype plugin on
+filetype indent on
+
+set number
+set cursorline
+
+set tabstop=4
+set shiftwidth=4
+set colorcolumn=120
+hi ColorColumn ctermbg=lightcyan guibg=blue
+set expandtab
+set nobackup
+set scrolloff=10
+set nowrap
+set incsearch
+set smartcase
+set showcmd
+set showmode
+set showmatch
+set hlsearch
+set history=1000
+
+set wildmenu
+set wildmode=list:longest
+
+"   shortcuts
+let mapleader = '\'
+nnoremap <Leader>o o <esc>
+nnoremap <Leader>O O <esc>
+nnoremap Y y$ 
+"nnoremap D d$ 
+ 
+" You can split the window in Vim by typing :split or :vsplit.
+" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
+nnoremap <c-\> :vsplit <CR>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l 
+ 
+inoremap jj <Esc>
+ 
+"   NERD tree
+nnoremap <Leader>n NERDTreeMirror<CR>:NERDTreeFocus<CR>
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+map <c-_> <plug>NERDCommenterToggle 
+
+"   Multiple cursors
+let g:multi_cursor_use_default_mapping=0
+
+"   Plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
+ 
+call plug#end()
+
+"   Python files 
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=119 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+ 
