@@ -29,6 +29,7 @@ export -f install_files
 # Parameters:
 # $1 = The file name.
 install_file() {
+  printf "  + %s\n" "$1"
   local source_file="$1"
   local dest_file="$HOME/$(base_dest_file $source_file)"
   local dest_dir="$(dirname $dest_file)"
@@ -39,6 +40,7 @@ install_file() {
   fi
 
   if [[ ! -f "$dest_file" ]]; then
+    printf "  + %s\n" "$dest_dir"
     mkdir -p "$dest_dir"
     cp "$source_file" "$dest_file"
     printf "  + %s\n" "$dest_file"
@@ -155,6 +157,6 @@ base_dest_file() {
   local source_file="$1"
   local computed_file=''
 
-  printf "${source_file%.*}" | sed 's/home_files\///g'
+  printf $source_file | sed 's/home_files\///g'
 }
 export -f base_dest_file
